@@ -9,7 +9,7 @@ def follow(t):
     page = 1
     indexing = 0
     limit=int(input("\n Enter Follow Limit: "))
-    user=int(input(" Enter The User name of Person to Follow their Followers: "))
+    user=str(input(" Enter The User name of Person to Follow their Followers: "))
     for i in range(limit):
         response = requests.get('https://api.github.com/users/'+user+'/followers?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
         res = response.json()
