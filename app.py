@@ -125,7 +125,7 @@ username=input("Your Username: ")
 usertoken=getpass.getpass('Token: ')
 #GetPass doesn't show your stuff, so you could enter the wrong thing. This solves the problem.
 if not usertoken.startswith("ghp_"):
-        print('You didn\'t input a proper access token')
+        print('You didn\'t input a proper access token. It should start with ghp_.')
         exit(1)
 
 print("\n\n========= Tools ===========")
