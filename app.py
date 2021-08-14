@@ -142,7 +142,7 @@ except:
 if not usertoken.startswith("ghp_"):
     print('You didn\'t input a proper access token. It should start with ghp_ and should be 40 letters in length.')
     exit(1)
-if len(usertoken) <= 40:
+if len(usertoken)>40 or len(usertoken)<40:
     print('You didn\'t input a proper access token. It should start with ghp_ and should be 40 letters in length.')
     exit(1)
 
@@ -150,7 +150,7 @@ print("\n\n========= Tools ===========")
 print("1.Follow\n2.Unfollow")
 try:
     ans = input("\nYour Choice: ")
-except KeyboardIntterupt:
+except KeyboardInterrupt:
     print('\n')
     exit(0)
 except:
