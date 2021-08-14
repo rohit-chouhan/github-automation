@@ -97,6 +97,7 @@ def unfollow(u,t):
             print(" ("+str(i+1)+") Unfollowed User Successfully: @"+res[indexing]['login'])
         #IndexError is caused when your limit is over the number of followers the user has, so it's not an error to worry about
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except IndexError:
             break
@@ -120,17 +121,40 @@ def unfollow(u,t):
 
 print("============Github Tool by @rohit-chouhan =============")
 
-username=input("Your Username: ")
+try:
+    username=input("Your Username: ")
+except KeyboardInterrupt:
+    print('\n')
+    exit(0)
+except:
+    print('Error in input')
+    exit(1)
 #Use getpass for token security
-usertoken=getpass.getpass('Token: ')
+try:
+    usertoken=getpass.getpass('Token: ')
+except KeyboardInterrupt:
+    print('\n')
+    exit(0)
+except:
+    print('Error in input')
+    
 #GetPass doesn't show your stuff, so you could enter the wrong thing. This solves the problem.
 if not usertoken.startswith("ghp_"):
-        print('You didn\'t input a proper access token. It should start with ghp_.')
-        exit(1)
+    print('You didn\'t input a proper access token. It should start with ghp_ and should be 40 letters in length.')
+    exit(1)
+if len(usertoken) <= 40:
+    print('You didn\'t input a proper access token. It should start with ghp_ and should be 40 letters in length.')
+    exit(1)
 
 print("\n\n========= Tools ===========")
 print("1.Follow\n2.Unfollow")
-ans = input("\nYour Choice: ")
+try:
+    ans = input("\nYour Choice: ")
+except KeyboardIntterupt:
+    print('\n')
+    exit(0)
+except:
+    print('Error in input')
 
 if ans=="1":
     follow(usertoken)
