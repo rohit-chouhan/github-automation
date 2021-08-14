@@ -4,7 +4,6 @@
 # Last Update  :   August 14, 2021
 #==========================================#
 import requests
-import signal
 #Using GetPass, so you should have Python 2.5 or higher
 import getpass
 
