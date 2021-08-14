@@ -10,12 +10,15 @@ import getpass
 def follow(t):
     page = 1
     indexing = 0
-    limit=int(input("\n Enter Follow Limit: "))
-    if not limit:
-        #Person with most followers is Linus Torvalds(140k+), so 10M is more than enough
+    try:
+        limit=int(input("\n Enter Follow Limit: "))
+    except ValueError:
         limit=1000000
-    user=str(input(" Enter The User name of Person to Follow their Followers: "))
-    if not user:
+    except:
+        exit(1)
+    try:
+        user=str(input(" Enter The User name of Person to Follow their Followers: "))
+    except:
         print("Please enter your username")
         exit(1)
     for i in range(limit):
@@ -51,10 +54,13 @@ def follow(t):
 def unfollow(u,t):
     page = 1
     indexing = 0
-    limit=int(input("\n Enter UnFollow Limit: "))
-    if not limit:
+    try:
+        limit=int(input("\n Enter UnFollow Limit: "))
+    except ValueError:
         #10M is more than enough
         limit=1000000
+    except:
+        exit(1)
     for i in range(limit):
         try:
             response = requests.get('https://api.github.com/users/'+u+'/following?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
