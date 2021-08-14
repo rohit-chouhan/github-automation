@@ -8,14 +8,9 @@ import signal
 #Using GetPass, so you should have Python 2.5 or higher
 import getpass
 
-#def handler(signum, frame):
-#    res = input("Ctrl-c was pressed. Do you really want to exit? y/n ")
-#    if res == 'y':
-#        exit(0)
-#
-#signal.signal(signal.SIGINT, handler)
 
-#ValueError in loop means Ctrl+C
+
+#KeyboardInterrupt in loop means Ctrl+C
 
 def follow(t):
     page = 1
@@ -34,13 +29,13 @@ def follow(t):
     for i in range(limit):
         try:
             response = requests.get('https://api.github.com/users/'+user+'/followers?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except:
             print("Error getting response")
         try:
             res = response.json()
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except:
             print("Error parsing JSON")
@@ -50,7 +45,7 @@ def follow(t):
         #IndexError is caused when your limit is over the number of followers the user has, so it's not an error to worry about
         except IndexError:
             break
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except:
             try:
@@ -83,13 +78,13 @@ def unfollow(u,t):
     for i in range(limit):
         try:
             response = requests.get('https://api.github.com/users/'+u+'/following?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except:
             print("Error getting response")
         try:
             res = response.json()
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except:
             print("Error parsing JSON")
@@ -97,7 +92,7 @@ def unfollow(u,t):
             requests.delete('https://api.github.com/user/following/'+res[indexing]['login'], headers= {'Authorization' : 'Bearer '+t+''})
             print(" ("+str(i+1)+") Unfollowed User Successfully: @"+res[indexing]['login'])
         #IndexError is caused when your limit is over the number of followers the user has, so it's not an error to worry about
-        except ValueError:
+        except KeyboardInterrupt:
             exit(0)
         except IndexError:
             break
