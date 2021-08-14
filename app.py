@@ -11,7 +11,6 @@ import getpass
 def handler(signum, frame):
     res = input("Ctrl-c was pressed. Do you really want to exit? y/n ")
     if res == 'y':
-        break
         exit(0)
 
 signal.signal(signal.SIGINT, handler)
