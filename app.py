@@ -4,8 +4,16 @@
 # Last Update  :   August 14, 2021
 #==========================================#
 import requests
+import signal
 #Using GetPass, so you should have Python 2.5 or higher
 import getpass
+
+def handler(signum, frame):
+    res = input("Ctrl-c was pressed. Do you really want to exit? y/n ")
+    if res == 'y':
+        exit(0)
+
+signal.signal(signal.SIGINT, handler)
 
 def follow(t):
     page = 1
