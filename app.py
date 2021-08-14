@@ -89,7 +89,7 @@ print("============Github Tool by @rohit-chouhan =============")
 
 username=input("Your Username: ")
 #Use getpass for token security
-usertoken=getpass.getpass(prompt='Token: ')
+usertoken=getpass.getpass('Token: ')
 
 print("\n\n========= Tools ===========")
 print("1.Follow\n2.Unfollow")
