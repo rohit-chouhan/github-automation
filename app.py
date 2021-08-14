@@ -4,6 +4,7 @@
 # Last Update  :   August 14, 2021
 #==========================================#
 import requests
+#Using GetPass, so you should have Python 2.5 and higher
 import getpass
 
 def follow(t):
