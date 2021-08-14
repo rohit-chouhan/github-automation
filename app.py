@@ -29,12 +29,14 @@ def follow(t):
         try:
             response = requests.get('https://api.github.com/users/'+user+'/followers?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except:
             print("Error getting response")
         try:
             res = response.json()
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except:
             print("Error parsing JSON")
@@ -45,6 +47,7 @@ def follow(t):
         except IndexError:
             break
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except:
             try:
@@ -78,12 +81,14 @@ def unfollow(u,t):
         try:
             response = requests.get('https://api.github.com/users/'+u+'/following?page='+str(page), headers= {'Authorization' : 'Bearer '+t+''})
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except:
             print("Error getting response")
         try:
             res = response.json()
         except KeyboardInterrupt:
+            print('\n')
             exit(0)
         except:
             print("Error parsing JSON")
@@ -118,6 +123,7 @@ print("============Github Tool by @rohit-chouhan =============")
 username=input("Your Username: ")
 #Use getpass for token security
 usertoken=getpass.getpass('Token: ')
+#GetPass doesn't show your stuff, so you could enter the wrong thing. This solves the problem.
 
 print("\n\n========= Tools ===========")
 print("1.Follow\n2.Unfollow")
