@@ -37,7 +37,10 @@ def follow(t):
         except IndexError:
             break
         except:
-            print("Error following user @"+res[indexing]['login'])
+            try:
+                print("Error following user @"+res[indexing]['login'])
+            except:
+                print("Error following user "+str(i+1))
         #There are 30 people(0~29) per API page index. This might change later on.
         if indexing==29:
             page+=1
@@ -77,7 +80,10 @@ def unfollow(u,t):
         except IndexError:
             break
         except:
-            print("Error unfollowing user @"+res[indexing]['login'])   
+            try:
+                print("Error unfollowing user @"+res[indexing]['login'])
+            except:
+                print("Error unfollowing user "+str(i+1))  
         #There are 30 people(0~29) per API page index. This might change later on.
         if indexing==29:
             page+=1
